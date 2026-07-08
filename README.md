@@ -6,4 +6,4 @@ Please go to releases for the tutorial and info, pictures of the app etc here> [
 
 Note: I have been working on version 0.02 with some very nice new feature and will be uploading soon.
 
-Note: I only provide my app here so if you get it somewhere else please be careful and check it.
+Note: I only provide my app here, any other download is unathorised and you should be careful.
