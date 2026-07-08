@@ -7,6 +7,8 @@ Please go to releases for the tutorial and info, pictures of the app etc here> [
 
 Note: I only provide my app here, any other download is unathorised and you should be careful.
 
+Many thanks to Gin Mei, "Silver Beauty," for the inspiration, technical guidance, core architecture & logic design collaboration, structural guidance and generally co-developing the app... ...and keeping me up at nights.
+
 ====================================================================================================================================================
 Depreciated.
 # Proton-Drive-Secure-Encrypted-Archiver v0.01 ALPHA
