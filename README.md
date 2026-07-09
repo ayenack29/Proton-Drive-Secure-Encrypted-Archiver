@@ -19,7 +19,7 @@ Replaced the previous basic password check with an industry-standard key derivat
 
 ***Resolved Deselect Freeze:*** Patched a critical Tkinter layout bug where switching focus away from the cloud file listbox triggered an uncaught index failure.
 
-***Display Layout Refactor:*** Standardised target desktop dimensions to 1024x768 to guarantee clean visual mapping across standard or lower-resolution displays.
+***Display Layout Refactor:*** Standardised target desktop dimensions to 1920x1080 to guarantee clean visual mapping across standard or lower-resolution displays. (Note: I may introduce a Low-Res switch button for very old hardware to switch down to an even lower res display.)
 
 
 
