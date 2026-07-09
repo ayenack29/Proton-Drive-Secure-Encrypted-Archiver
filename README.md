@@ -44,7 +44,7 @@ Open your terminal inside the application folder and run:
 
 2, On your first v3.0 launch, the app detects an empty configuration and opens the Master Vault Security Initialisation panel.
 
-3, Type a strong master password twice and click Create Cryptographic Hash & Lock.(Note: This creates a mathematically salted signature in your config file. It keeps bad actors out of your UI, but it cannot be recovered if forgotten!)
+3, Type a strong master password twice and click Create Cryptographic Hash & Lock. (Note: This creates a mathematically salted signature in your config file. It keeps bad actors out of your UI, but it cannot be recovered if forgotten!)
 
 **Step 2: Running a Secure Cloud Backup**
 
