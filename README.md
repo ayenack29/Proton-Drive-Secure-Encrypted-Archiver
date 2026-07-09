@@ -54,7 +54,7 @@ Open your terminal inside the application folder and run:
 
 3, Choose or type a Backup Label Profile (e.g., Documents-Backup).
 
-4, Type your private GPG Encryption Passphrase into the boxes.(Crucial: This is the local passphrase that locks your file before it leaves your machine. It is completely independent of your Proton Drive login).
+4, Type your private GPG Encryption Passphrase into the boxes. (Crucial: This is the local passphrase that locks your file before it leaves your machine. It is completely independent of your Proton Drive login).
 
 5, Click Begin Backup. The app compresses the target, safely pipes it through local GPG encryption, and securely streams it up to your Proton Drive folder.
 
