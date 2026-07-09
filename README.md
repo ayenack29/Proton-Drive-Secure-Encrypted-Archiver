@@ -2,6 +2,9 @@
 
 ⚠️ IMPORTANT: UPDATE REQUIRED FOR EXISTING USERS OF (v2.5 Release) The repository history has been completely reset and force-updated to deliver a major Version 3.0 High-Security Overhaul. If you cloned a previous version of this tool, your local Git history will conflict with the new clean timeline. To discard the old prototype history and cleanly update to the secure v3.0 production branch, run the following commands in your local project terminal:
 
+**git fetch --all**
+**git reset --hard origin/main**
+
 📋 **1. Official Changelog (v3.0)**
 
 🔒 **Cryptography & Process Hardening**
