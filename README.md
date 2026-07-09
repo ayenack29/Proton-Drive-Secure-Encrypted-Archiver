@@ -67,7 +67,7 @@ Open your terminal inside the application folder and run:
 
 4, Provide your private GPG Passphrase into the box and click Start Restore. The script downloads the package, decrypts it locally in temporary memory, and unpacks the target directories completely clean.
 
-Please go to releases for the tutorial and info, pictures of the app etc here> [Download Proton Professional Backup v3.0]()   
+Please go to releases for the tutorial and info, pictures of the app etc.  
 
 Note: I only provide my app here, any other download is unathorised and you should be careful.
 
