@@ -6,8 +6,9 @@
 
 **git reset --hard origin/main**
 
-📋 **1. Official Changelog (v3.0)**
 
+
+📋 **1. Official Changelog (v3.0)**
 
 🔒 **Cryptography & Process Hardening**
 
