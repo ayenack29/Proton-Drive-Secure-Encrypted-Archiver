@@ -1,6 +1,6 @@
-⚠️ **PROJECT STATUS & EXPECTATIONS:** This is a solo development project with occasional contribution from a single collaborator. Testing and debugging are ongoing, and active development time is extremely limited. Please only deploy or use this application if you are capable of auditing and bugfixing the Python source code yourself. We cannot offer technical support, troubleshooting, or real-time assistance.
+⚠️ **PROJECT STATUS & EXPECTATIONS:** This is a solo development project with occasional contribution from a other collaborators. Testing and debugging are ongoing, and active development time is extremely limited. Please only deploy or use this application if you are capable of auditing and bugfixing the Python source code yourself. We cannot offer technical support, troubleshooting, or real-time assistance.
 
-⚠️ IMPORTANT: UPDATE REQUIRED FOR EXISTING USERS OF (v2.5 Release) The repository history has been completely reset and force-updated to deliver a major Version 3.0 High-Security Overhaul. If you cloned a previous version of this tool, your local Git history will conflict with the new clean timeline. To discard the old prototype history and cleanly update to the secure v3.0 production branch, run the following commands in your local project terminal:
+⚠️ IMPORTANT: UPDATE REQUIRED FOR EXISTING USERS OF (v2.5 Release) The repository history has been completely reset and force-updated to deliver a major Version update and High-Security Overhaul. If you cloned a previous v2.5 version of this tool, your local Git history will conflict with the new clean timeline. To discard the old prototype history and cleanly update to the secure latest version, run the following commands in your local project terminal:
 
 **git fetch --all**
 
@@ -8,75 +8,54 @@
 
 ==============================================================================================
 
+Changelog and Bug Fixes: pduiv3.6.py
 
-📋 **1. Official Changelog (v3.0)**
+This version marks a significant stabilisation of the backup utility, addressing fundamental architectural limitations found in v3.5. It should HOPEFULLY be a lot more stable and work as intended. I have been working on this version for quite some time, but ran into a lot of difficulties getting stable so kept it back. I need to give the Restore Archive a bit of love, but it’s working fine for me now with a few quirks.
 
-🔒 **Cryptography & Process Hardening**
+## New Features
+[NOTE: This feature is not working currently. I am working to fix this. Not sure it’s possible. If anyone works it out let me know] * Automated Retention Management: Added logic to define and enforce retention counts for remote backups. Old .gpg files are now automatically purged from Proton Drive based on the configured limit.
 
-***Implemented PBKDF2-HMAC-SHA256 Master Gate:*** 
-Replaced the previous basic password check with an industry-standard key derivation function. Local dashboard access is now enforced via a cryptographically salted master password utilizing 100,000 iterations to completely halt brute-force parsing.
+* System Dependency Check: Startup validation now verifies that gpg, tar, zstd, and proton-drive are present and accessible in your system PATH.
 
-***Eliminated Plaintext Passphrase Caching:*** Completely removed the plain-text credential storage loop. Individual file-encryption keys are now held strictly within volatile system memory (RAM) and are automatically scrubbed immediately post-execution.
+* Centralised Config Paths: Migrated configuration and log storage to ~/.config/proton-backup/ to ensure path consistency.
 
-***Process Tree Hardening:*** Eliminated all unsafe shell script pipelines (shell=True). System actions are now executed as structured array commands, and passwords are fed directly into GPG via protected standard input (stdin) memory pipes (--passphrase-fd 0), preventing local process eavesdropping.
+* Passphrase Security Audit: Introduced a mandatory check for passphrase strength, alerting users to security risks before initiating archives.
 
-⏱️ **File Synchronization & Precision Logging**
+## Bug Fixes
+* Reliable Cancellation: Resolved the "zombie process" issue from v3.5 by implementing an active_procs registry. The "Cancel" button now correctly triggers termination for all associated subprocesses.
 
-***Precision Time-Stamping:*** Appended dynamic hour and minute markers (_%H%M) to file outputs. This prevents remote cloud collisions, ensuring back-to-back backup packages uploaded on the same day sit comfortably side-by-side without naming conflicts.
+* Config Corruption Prevention: Implemented atomic writes using os.replace to prevent configuration data loss during unexpected crashes or power failures.
 
-***Resolved Deselect Freeze:*** Patched a critical Tkinter layout bug where switching focus away from the cloud file listbox triggered an uncaught index failure.
+* UI/Network Responsiveness: Tightened the integration between the "Test Route Link" feature and the UI to provide immediate feedback on API connectivity issues.
 
-***Display Layout Refactor:*** Standardised target desktop dimensions to 1920x1080 to guarantee clean visual mapping across standard or lower-resolution displays. (Note: I may introduce a Low-Res switch button for very old hardware to switch down to an even lower res display.)
+Tutorial: Setting Up Your Backup Workflow
 
+Follow these steps to configure pduiv3.6.py for optimal performance.
 
+1. Initial Setup
+* Ensure the required binaries (gpg, tar, zstd, proton-drive) are installed on your system.
 
-🛡️ **2. The "Why":**  ***Reasons for the Structural Changes***
+* Run the script once to generate the directory structure at ~/.config/proton-backup/.
 
-As an open-source tool built around absolute privacy, the core code needed to meet modern cryptographic standards before scaling to a wider user base.
+* The script will verify your environment; if any dependency is missing, it will alert you to update your PATH.
 
-🚀 **3. Updated User Walkthrough**
+2. Configuring Retention and Security
 
-1: ***Initialize the Master Gate***
+* Open the config.json located in the new configuration folder.
 
-Open your terminal inside the application folder and run:
+* Define your retention policy by setting the integer value for the number of remote backups to keep per label.
 
-**python3 pdui.py**
+* When prompted for a passphrase, ensure it meets the recommended complexity requirements; the script will provide a warning if the entropy is too low.
 
-2, On your first v3.0 launch, the app detects an empty configuration and opens the Master Vault Security Initialisation panel.
+3. Executing and Managing Backups
+* Start: Initiate a backup through the main UI. The system will perform an atomic write for your configuration state.
 
-3, Type a strong master password twice and click Create Cryptographic Hash & Lock. (Note: This creates a mathematically salted signature in your config file. It keeps bad actors out of your UI, but it cannot be recovered if forgotten!)
+* Monitoring: Check ~/.config/proton-backup/pdui.log if you encounter unexpected behavior. The log rotates automatically, maintaining the last 3 files at 2MB each.
 
-**Step 2: Running a Secure Cloud Backup**
+* Canceling: If you need to stop a process, simply click "Cancel". The new active_procs registry ensures that all background tasks are terminated immediately.
 
-1, Input your newly created Master Password to unlock the main application dashboard.
-
-2, Click Browse Folder or Browse Files to select the target data.
-
-3, Choose or type a Backup Label Profile (e.g., Documents-Backup).
-
-4, Type your private GPG Encryption Passphrase into the boxes. (Crucial: This is the local passphrase that locks your file before it leaves your machine. It is completely independent of your Proton Drive login).
-
-5, Click Begin Backup. The app compresses the target, safely pipes it through local GPG encryption, and securely streams it up to your Proton Drive folder.
-
-**Step 3: Activating the App Lock Screen**
-
-1, If you need to step away from your desk while the application window is open, click the 🔒 Lock App Screen button at the top of either tab.
-
-2, The dashboard instantly unloads from active layout memory, forcing anyone approaching your desk to provide the Master Password before allowing access to any controls or cloud maps.
-
-**Step 4: Restoring an Archive**
-
-1, Navigate to the Restore Archive tab.
-
-2, Click Refresh Cloud List to fetch your available secure manifests directly from your cloud storage.
-
-3, Select an archive from the list and click Select Destination Folder to choose where the files should extract.
-
-4, Provide your private GPG Passphrase into the box and click Start Restore. The script downloads the package, decrypts it locally in temporary memory, and unpacks the target directories completely clean.
-
-Please go to releases for the tutorial and info, pictures of the app etc.  
 
 Note: I only provide my app here, any other download is unathorised and you should be careful.
 
-Many thanks to Gin Mei, "Silver Beauty," for the inspiration, technical guidance, core architecture & logic design collaboration, structural guidance and generally co-developing the app... ...and keeping me up at nights.
+Many thanks to Gin Mei, "Silver Beauty," for the inspiration, technical guidance, core architecture & logic design collaboration, structural guidance and generally co-developing the app... ...and keeping me up at nights. And also A. D. Cade for recently bringing sanity to my process. Without their help this would not be possible.
 
