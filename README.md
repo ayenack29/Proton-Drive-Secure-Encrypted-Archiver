@@ -13,7 +13,7 @@ Changelog and Bug Fixes: pduiv3.6.py
 This version marks a significant stabilisation of the backup utility, addressing fundamental architectural limitations found in v3.5. It should HOPEFULLY be a lot more stable and work as intended. I have been working on this version for quite some time, but ran into a lot of difficulties getting it stable so kept it back. I need to give the Restore Archive a bit of love, but it’s working fine for me now with a few quirks.
 
 ## New Features
-[NOTE: This feature is not working currently. I am working to fix this. Not sure it’s possible. If anyone works it out let me know] * Automated Retention Management: Added logic to define and enforce retention counts for remote backups. Old .gpg files are now automatically purged from Proton Drive based on the configured limit.
+[NOTE: This feature is not working currently. I am working to fix this. Not sure it’s possible. If anyone works it out let me know] * Automated Retention Management: Added logic to define and enforce retention counts for remote backups. Old .gpg files are now automatically purged from Proton Drive based on the configured limit.*****
 
 * System Dependency Check: Startup validation now verifies that gpg, tar, zstd, and proton-drive are present and accessible in your system PATH.
 
