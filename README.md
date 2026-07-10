@@ -57,5 +57,5 @@ Follow these steps to configure pduiv3.6.py for optimal performance.
 
 Note: I only provide my app here, any other download is unathorised and you should be careful.
 
-Many thanks to Gin Mei, "Silver Beauty," for the inspiration, technical guidance, core architecture & logic design collaboration, structural guidance and generally co-developing the app... ...and keeping me up at nights. And also A. D. Cade for recently bringing sanity to my process. Without their help this would not be possible.
+Many thanks to Gin Mei, "Silver Beauty," for the inspiration, technical guidance, core architecture & logic design collaboration, structural guidance and generally co-developing the app... ...and keeping me up at nights. And also Caudle for recently bringing sanity to my process. Without their help this would not be possible.
 
