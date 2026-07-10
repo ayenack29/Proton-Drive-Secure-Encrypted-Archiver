@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Proton Professional Backup v3.5 (High-Security Hardened Edition)
+# Proton Professional Backup v3.6 (High-Security Hardened Edition)
 # Copyright (C) 2026 Mark Sean Ryan (ayenack29)
 #
 # This program is free software: you can redistribute it and/or modify
